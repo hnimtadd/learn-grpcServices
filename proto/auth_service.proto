@@ -1,0 +1,17 @@
+syntax = "proto3";
+package grpcCourse.pcbook;
+option go_package = ".;pb";
+
+message LoginRequest{
+    string user_name = 1;
+    string password = 2;
+}
+
+message LoginResponse{
+    string token = 1;
+}
+
+service AuthService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+}
+

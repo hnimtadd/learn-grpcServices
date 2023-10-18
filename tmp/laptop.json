@@ -1,0 +1,55 @@
+{
+ "id": "1f56e1bd-1748-4d68-892b-09886827ab7a",
+ "brand": "APPLE",
+ "name": "Macbook Air M1 2021",
+ "cpu": {
+  "brand": "Intel",
+  "name": "Core i7 9700HQ",
+  "number_cores": 6,
+  "number_threads": 13,
+  "min_ghz": 2.8326384851551643,
+  "max_ghz": 4.4230481944913835
+ },
+ "ram": {
+  "value": "7",
+  "unit": "GIGABYTE"
+ },
+ "gpus": [
+  {
+   "brand": "AMD",
+   "name": "Ryzen 5 PRO 3580U",
+   "min_ghz": 3.473460945774281,
+   "max_ghz": 3.546823359420508,
+   "memory": {
+    "value": "4",
+    "unit": "GIGABYTE"
+   }
+  }
+ ],
+ "storages": [
+  {
+   "driver": "HDD",
+   "memory": {
+    "value": "5",
+    "unit": "TETRABYTE"
+   }
+  }
+ ],
+ "screen": {
+  "size_inch": 14.240585,
+  "resolution": {
+   "width": 2910,
+   "height": 1637
+  },
+  "panel": "UNKNOWN",
+  "multitouch": true
+ },
+ "keyboard": {
+  "layout": "UNKNOWN",
+  "backlit": true
+ },
+ "weight_kg": 1.0494513243078365,
+ "price_usd": 1984.4261968205167,
+ "release_year": 2017,
+ "update_at": "2023-10-18T16:32:15.612183455Z"
+}
