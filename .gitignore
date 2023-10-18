@@ -1,1 +1,3 @@
+cert/**
 !cert/gen.sh
+!cert/**.cnf
