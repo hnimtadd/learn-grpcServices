@@ -12,8 +12,8 @@ import (
 
 func TestFileSerializer(t *testing.T) {
 	t.Parallel()
-	binaryFile := "../tmp/laptop.bin"
-	jsonFile := "../tmp/laptop.json"
+	binaryFile := "./../../tmp/laptop.bin"
+	jsonFile := "./../../tmp/laptop.json"
 	laptop1 := sample.NewLaptop()
 	err := serializer.WriteProtobufToBinaryFile(laptop1, binaryFile)
 	require.NoError(t, err)

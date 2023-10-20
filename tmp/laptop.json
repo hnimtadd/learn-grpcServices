@@ -1,25 +1,25 @@
 {
- "id": "1f56e1bd-1748-4d68-892b-09886827ab7a",
+ "id": "09bb731d-4ba9-42c9-950e-1ba63a7e3442",
  "brand": "APPLE",
  "name": "Macbook Air M1 2021",
  "cpu": {
-  "brand": "Intel",
-  "name": "Core i7 9700HQ",
-  "number_cores": 6,
-  "number_threads": 13,
-  "min_ghz": 2.8326384851551643,
-  "max_ghz": 4.4230481944913835
+  "brand": "AMD",
+  "name": "Ryzen 3 PRO 3280GE",
+  "number_cores": 3,
+  "number_threads": 14,
+  "min_ghz": 3.2197667731016884,
+  "max_ghz": 4.551941508555583
  },
  "ram": {
-  "value": "7",
+  "value": "4",
   "unit": "GIGABYTE"
  },
  "gpus": [
   {
    "brand": "AMD",
-   "name": "Ryzen 5 PRO 3580U",
-   "min_ghz": 3.473460945774281,
-   "max_ghz": 3.546823359420508,
+   "name": "Ryzen 7 PRO 2780U",
+   "min_ghz": 2.581535318445969,
+   "max_ghz": 4.612111075554434,
    "memory": {
     "value": "4",
     "unit": "GIGABYTE"
@@ -30,26 +30,26 @@
   {
    "driver": "HDD",
    "memory": {
-    "value": "5",
+    "value": "6",
     "unit": "TETRABYTE"
    }
   }
  ],
  "screen": {
-  "size_inch": 14.240585,
+  "size_inch": 14.188341,
   "resolution": {
-   "width": 2910,
-   "height": 1637
+   "width": 2970,
+   "height": 1671
   },
   "panel": "UNKNOWN",
   "multitouch": true
  },
  "keyboard": {
-  "layout": "UNKNOWN",
-  "backlit": true
+  "layout": "QWERTY",
+  "backlit": false
  },
- "weight_kg": 1.0494513243078365,
- "price_usd": 1984.4261968205167,
- "release_year": 2017,
- "update_at": "2023-10-18T16:32:15.612183455Z"
+ "weight_kg": 2.459156586813473,
+ "price_usd": 1537.2008499105264,
+ "release_year": 2015,
+ "update_at": "2023-10-20T03:58:03.935247158Z"
 }
