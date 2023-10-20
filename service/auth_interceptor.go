@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"grpcCource/pkg/token"
 	"log"
 
 	"google.golang.org/grpc"
@@ -11,11 +12,11 @@ import (
 )
 
 type AuthInterceptor struct {
-	jwtManager      *JWTManager
+	jwtManager      *token.JWTManager
 	accessibleRoles map[string][]string
 }
 
-func NewAuthInterceptor(jwtManager *JWTManager, accessibleRoles map[string][]string) *AuthInterceptor {
+func NewAuthInterceptor(jwtManager *token.JWTManager, accessibleRoles map[string][]string) *AuthInterceptor {
 	return &AuthInterceptor{
 		jwtManager:      jwtManager,
 		accessibleRoles: accessibleRoles,

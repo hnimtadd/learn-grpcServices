@@ -2,7 +2,7 @@ package service_test
 
 import (
 	"context"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 	"grpcCource/sample"
 	"grpcCource/service"
 	"testing"

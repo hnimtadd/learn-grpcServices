@@ -1,7 +1,7 @@
 package sample
 
 import (
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 
 	"github.com/google/uuid"
 	"google.golang.org/protobuf/types/known/timestamppb"

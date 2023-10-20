@@ -2,9 +2,9 @@ package service_test
 
 import (
 	"context"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
+	"grpcCource/pkg/serializer"
 	"grpcCource/sample"
-	"grpcCource/serializer"
 	"grpcCource/service"
 	"io"
 	"net"

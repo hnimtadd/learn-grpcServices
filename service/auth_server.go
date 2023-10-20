@@ -2,19 +2,21 @@ package service
 
 import (
 	"context"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
+	"grpcCource/pkg/store"
+	"grpcCource/pkg/token"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 type AuthServer struct {
-	userStore UserStore
-	jwtManage *JWTManager
+	userStore store.UserStore
+	jwtManage *token.JWTManager
 	pb.UnimplementedAuthServiceServer
 }
 
-func NewAuthServer(userStore UserStore, jwtManage *JWTManager) *AuthServer {
+func NewAuthServer(userStore store.UserStore, jwtManage *token.JWTManager) *AuthServer {
 	authServer := &AuthServer{
 		userStore: userStore,
 		jwtManage: jwtManage,

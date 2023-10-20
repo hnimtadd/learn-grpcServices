@@ -2,27 +2,23 @@ package service
 
 import (
 	"errors"
+	"grpcCource/pkg/models"
 	"sync"
 )
-
-type UserStore interface {
-	Add(user *User) error
-	Find(userName string) (*User, error)
-}
 
 var ErrNotFound = errors.New("Not found in system")
 
 type InMemoryUserStore struct {
 	mutext sync.RWMutex
-	users  map[string]*User
+	users  map[string]*models.User
 }
 
 func NewInMemoryUserStore() *InMemoryUserStore {
-	store := &InMemoryUserStore{users: map[string]*User{}}
+	store := &InMemoryUserStore{users: map[string]*models.User{}}
 	return store
 }
 
-func (store *InMemoryUserStore) Add(user *User) error {
+func (store *InMemoryUserStore) Add(user *models.User) error {
 	store.mutext.Lock()
 	defer store.mutext.Unlock()
 	_, ok := store.users[user.Username]
@@ -33,7 +29,7 @@ func (store *InMemoryUserStore) Add(user *User) error {
 	return nil
 }
 
-func (store *InMemoryUserStore) Find(userName string) (*User, error) {
+func (store *InMemoryUserStore) Find(userName string) (*models.User, error) {
 	u, ok := store.users[userName]
 	if !ok {
 		return nil, nil

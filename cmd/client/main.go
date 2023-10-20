@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"grpcCource/client"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 	"grpcCource/sample"
 	"log"
 	"os"

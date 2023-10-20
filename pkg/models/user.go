@@ -1,4 +1,4 @@
-package service
+package models
 
 import "golang.org/x/crypto/bcrypt"
 

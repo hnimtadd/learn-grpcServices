@@ -1,7 +1,8 @@
-package service
+package token
 
 import (
 	"errors"
+	"grpcCource/pkg/models"
 	"time"
 
 	"github.com/golang-jwt/jwt"
@@ -24,7 +25,7 @@ func NewJWTManager(secretKey string, tokenDuration time.Duration) *JWTManager {
 	return &JWTManager{secretKey: secretKey, tokenDuration: tokenDuration}
 }
 
-func (manager *JWTManager) Generate(user *User) (string, error) {
+func (manager *JWTManager) Generate(user *models.User) (string, error) {
 	claims := &UserClaim{
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(manager.tokenDuration).Unix(),

@@ -1,0 +1,5 @@
+version: "3"
+services:
+  pcBook:
+    image: .
+    container_name: pc_book

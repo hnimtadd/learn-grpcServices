@@ -2,7 +2,10 @@ package service_test
 
 import (
 	"context"
-	"grpcCource/pb"
+	"grpcCource/pkg/models"
+	"grpcCource/pkg/pb"
+	"grpcCource/pkg/store"
+	"grpcCource/pkg/token"
 	"grpcCource/service"
 	"testing"
 	"time"
@@ -22,20 +25,20 @@ func TestAuthServer(t *testing.T) {
 		secretKey       = "secret"
 		refreshDuration = time.Second * 5
 	)
-	user, err := service.NewUser(username, password, role)
+	user, err := models.NewUser(username, password, role)
 	require.NoError(t, err)
 	require.NotNil(t, user)
 
 	userStore := service.NewInMemoryUserStore()
 	userStore.Add(user)
 	require.NotNil(t, userStore)
-	jwtManager := service.NewJWTManager(secretKey, refreshDuration)
+	jwtManager := token.NewJWTManager(secretKey, refreshDuration)
 	testCases := []struct {
 		name       string
-		userStore  service.UserStore
+		userStore  store.UserStore
 		username   string
 		password   string
-		jwtManager *service.JWTManager
+		jwtManager *token.JWTManager
 		code       codes.Code
 	}{
 		{

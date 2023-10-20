@@ -17,13 +17,13 @@ server:
 	 go run cmd/server/main.go --port 8080
 
 servertls:
-	 go run cmd/server/main.go --port 8080 --tls=true
+	 go run cmd/server/main.go --port 4433 --tls=true
 
 client:
 	go run cmd/client/main.go --address 0.0.0.0:8080
 
 clienttls:
-	go run cmd/client/main.go --address 0.0.0.0:443 --tls=true
+	go run cmd/client/main.go --address 0.0.0.0:4433 --tls=true
 
 test:
 	go test -v -coverprofile cover.out ./...

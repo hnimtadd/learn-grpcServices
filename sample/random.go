@@ -1,7 +1,7 @@
 package sample
 
 import (
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 	"math/rand"
 )
 

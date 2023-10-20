@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"errors"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 	"io"
 	"log"
 	"time"

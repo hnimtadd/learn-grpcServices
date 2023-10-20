@@ -2,7 +2,7 @@ package client
 
 import (
 	"context"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 	"time"
 
 	"google.golang.org/grpc"

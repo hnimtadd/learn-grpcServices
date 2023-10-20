@@ -3,7 +3,7 @@ package client
 import (
 	"bufio"
 	"context"
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
 	"io"
 	"log"
 	"os"

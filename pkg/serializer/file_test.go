@@ -1,9 +1,9 @@
 package serializer_test
 
 import (
-	"grpcCource/pb"
+	"grpcCource/pkg/pb"
+	"grpcCource/pkg/serializer"
 	"grpcCource/sample"
-	"grpcCource/serializer"
 	"testing"
 
 	"github.com/stretchr/testify/require"

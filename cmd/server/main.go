@@ -6,7 +6,10 @@ import (
 	"crypto/x509"
 	"flag"
 	"fmt"
-	"grpcCource/pb"
+	"grpcCource/pkg/models"
+	"grpcCource/pkg/pb"
+	"grpcCource/pkg/store"
+	"grpcCource/pkg/token"
 	"grpcCource/service"
 	"log"
 	"net"
@@ -71,15 +74,15 @@ func loadTLSCredentials() (credentials.TransportCredentials, error) {
 	return credentials.NewTLS(config), nil
 }
 
-func createUser(userStore service.UserStore, username, password, role string) error {
-	user, err := service.NewUser(username, password, role)
+func createUser(userStore store.UserStore, username, password, role string) error {
+	user, err := models.NewUser(username, password, role)
 	if err != nil {
 		return err
 	}
 	return userStore.Add(user)
 }
 
-func seedUsers(userStore service.UserStore) error {
+func seedUsers(userStore store.UserStore) error {
 	if err := createUser(userStore, "admin", "secret", "admin"); err != nil {
 		return err
 	}
@@ -103,7 +106,7 @@ func main() {
 		log.Fatalf("Cannot seed user: %v", err)
 	}
 
-	jwtManager := service.NewJWTManager(secretKey, tokenDuration)
+	jwtManager := token.NewJWTManager(secretKey, tokenDuration)
 	interceptor := service.NewAuthInterceptor(jwtManager, accessibleRoles())
 	grpcOptions := []grpc.ServerOption{
 		grpc.ChainUnaryInterceptor(
