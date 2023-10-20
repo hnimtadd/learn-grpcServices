@@ -3,6 +3,7 @@ package service_test
 import (
 	"context"
 	"grpcCource/pkg/pb"
+	"grpcCource/pkg/store"
 	"grpcCource/sample"
 	"grpcCource/service"
 	"testing"
@@ -28,7 +29,7 @@ func TestServerCreateLaptop(t *testing.T) {
 	testCases := []struct {
 		name   string
 		laptop *pb.Laptop
-		store  service.LaptopStore
+		store  store.LaptopStore
 		code   codes.Code
 	}{
 		{

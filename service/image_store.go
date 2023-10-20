@@ -3,32 +3,23 @@ package service
 import (
 	"bytes"
 	"fmt"
+	"grpcCource/pkg/models"
 	"os"
 	"sync"
 
 	"github.com/google/uuid"
 )
 
-type ImageStore interface {
-	Save(laptopID string, imageType string, imageData bytes.Buffer) (string, error)
-}
-
 type DickImageStore struct {
 	mutex       sync.Mutex
 	imageFolder string
-	images      map[string]*ImageInfo
-}
-
-type ImageInfo struct {
-	LaptopID string
-	Type     string
-	Path     string
+	images      map[string]*models.ImageInfo
 }
 
 func NewDickImageStore(imageFolder string) *DickImageStore {
 	store := &DickImageStore{
 		imageFolder: imageFolder,
-		images:      map[string]*ImageInfo{},
+		images:      map[string]*models.ImageInfo{},
 	}
 	return store
 }
@@ -47,7 +38,7 @@ func (store *DickImageStore) Save(laptopID string, imageType string, imageData b
 	}
 
 	store.mutex.Lock()
-	store.images[imagePath] = &ImageInfo{
+	store.images[imagePath] = &models.ImageInfo{
 		LaptopID: laptopID,
 		Type:     imageType,
 		Path:     imagePath,

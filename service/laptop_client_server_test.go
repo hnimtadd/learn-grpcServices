@@ -4,6 +4,7 @@ import (
 	"context"
 	"grpcCource/pkg/pb"
 	"grpcCource/pkg/serializer"
+	"grpcCource/pkg/store"
 	"grpcCource/sample"
 	"grpcCource/service"
 	"io"
@@ -98,7 +99,7 @@ func TestClientSearchLaptop(t *testing.T) {
 	require.Equal(t, found, len(expectedID))
 }
 
-func startTestLaptopServer(t *testing.T, laptopStore service.LaptopStore, imageStore service.ImageStore, ratingStore service.RatingStore) (*service.LaptopServer, string) {
+func startTestLaptopServer(t *testing.T, laptopStore store.LaptopStore, imageStore store.ImageStore, ratingStore store.RatingStore) (*service.LaptopServer, string) {
 	laptopServer := service.NewLaptopServer(laptopStore, imageStore, ratingStore)
 	grpcServer := grpc.NewServer()
 	pb.RegisterLaptopServiceServer(grpcServer, laptopServer)

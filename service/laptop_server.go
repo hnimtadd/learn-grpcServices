@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 	"grpcCource/pkg/pb"
+	"grpcCource/pkg/store"
 	"io"
 	"log"
 	"time"
@@ -15,13 +16,13 @@ import (
 )
 
 type LaptopServer struct {
-	LaptopStore LaptopStore
-	ImageStore  ImageStore
-	RatingStore RatingStore
+	LaptopStore store.LaptopStore
+	ImageStore  store.ImageStore
+	RatingStore store.RatingStore
 	pb.UnimplementedLaptopServiceServer
 }
 
-func NewLaptopServer(laptopStore LaptopStore, imageStore ImageStore, RatingStore RatingStore) *LaptopServer {
+func NewLaptopServer(laptopStore store.LaptopStore, imageStore store.ImageStore, RatingStore store.RatingStore) *LaptopServer {
 	return &LaptopServer{
 		LaptopStore: laptopStore,
 		ImageStore:  imageStore,

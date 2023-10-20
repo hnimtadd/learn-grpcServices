@@ -12,12 +12,6 @@ import (
 
 var ErrAlreadyExists = errors.New("record already exists")
 
-type LaptopStore interface {
-	Save(laptop *pb.Laptop) error
-	Find(id string) (*pb.Laptop, error)
-	Search(ctx context.Context, filter *pb.Filter, found func(laptop *pb.Laptop) error) error
-}
-
 type InMemoryLaptopStore struct {
 	data  map[string]*pb.Laptop
 	mutex sync.Mutex
