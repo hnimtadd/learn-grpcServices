@@ -1,5 +1,46 @@
 version: "3"
 services:
-  pcBook:
-    image: .
+  pc_book_tls:
+    image: pcbook:latest
+    container_name: pc_book_tls
+    ports:
+      - 4433:4433
+    volumes:
+      - ./cert:/app/cert:ro
+    networks:
+      - pcBook-net
+    entrypoint: [ "/app/main", "--port", "4433", "--tls" ]
+
+  pc_book:
+    image: pcbook:latest
     container_name: pc_book
+    ports:
+      - 8080:8080
+    networks:
+      - pcBook-net
+    volumes:
+      - ./cert:/app/cert:ro
+    entrypoint: [ "/app/main", "--port", "8080" ]
+
+  mongodb:
+    image: mongo:4.2
+    container_name: pcbook_db
+    hostname: pcbook_db
+    ports:
+      - "27018:27017"
+    networks:
+      - pcBook-net
+    volumes:
+      - $PWD/container/_volumes/mongodb:/data/db
+      - $PWD/container/mongoinit/:/docker-entrypoint-initdb.d/
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+
+networks:
+  pcBook-net:
+    driver: bridge

@@ -11,6 +11,7 @@ import (
 	"grpcCource/pkg/store"
 	"grpcCource/pkg/token"
 	"grpcCource/service"
+	"grpcCource/utils"
 	"log"
 	"net"
 	"os"
@@ -93,13 +94,28 @@ func main() {
 	fmt.Println("Hello world from server")
 	port := flag.Int("port", 0, "the server port")
 	enableTLS := flag.Bool("tls", false, "enable SSL/TLS")
+	dsn := flag.String("dsn", "", "dsn of mongo")
+	database := flag.String("db", "", "database of mongo")
 	flag.Parse()
 	log.Printf("Server listen on port %d\n, TLS=%t", *port, *enableTLS)
 
+	var (
+		laptopStore = service.NewInMemoryLaptopStore()
+		imageStore  = service.NewDickImageStore("images")
+		ratingStore = service.NewInMemoryRatingStore()
+	)
+	if *database != "" && *dsn != "" {
+		db, err := utils.NewMongoDB(*dsn, *database)
+		if err != nil {
+			log.Fatal("Cannot start mongo connection:", err)
+		}
+		ratingStore = service.NewMongoScoreStore(db)
+	}
+
 	laptopServer := service.NewLaptopServer(
-		service.NewInMemoryLaptopStore(),
-		service.NewDickImageStore("images"),
-		service.NewInMemoryRatingStore(),
+		laptopStore,
+		imageStore,
+		ratingStore,
 	)
 	userStore := service.NewInMemoryUserStore()
 	if err := seedUsers(userStore); err != nil {

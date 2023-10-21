@@ -1,11 +1,14 @@
 gen:
-	protoc --proto_path=proto proto/*.proto --go_out=pb --go_opt=paths=source_relative --go-grpc_out=pb --go-grpc_opt=paths=source_relative
+	protoc --proto_path=proto proto/*.proto --go_out=./pkg/pb --go_opt=paths=source_relative --go-grpc_out=./pkg/pb --go-grpc_opt=paths=source_relative
 
 clean:
-	rm pb/*.go
+	rm ./pkg/pb/*.go
 
 evans:
 	evans -r repl -p 8080
+
+servermongo:
+	go run cmd/server/main.go --port 8081 --dsn="mongodb://username:password@127.0.0.1:27018/pcbook?parseTime=true&authSource=pcbook&authMechanism=SCRAM-SHA-256" --db="pcbook"
 
 server1:
 	go run cmd/server/main.go --port 50001

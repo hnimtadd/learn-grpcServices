@@ -1,3 +1,4 @@
+container/_volumes/**
 cert/**
 !cert/gen.sh
 !cert/**.cnf

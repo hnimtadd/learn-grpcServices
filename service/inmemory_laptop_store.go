@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"grpcCource/pkg/pb"
+	"grpcCource/pkg/store"
 	"sync"
 
 	"github.com/jinzhu/copier"
@@ -17,7 +18,7 @@ type InMemoryLaptopStore struct {
 	mutex sync.Mutex
 }
 
-func NewInMemoryLaptopStore() *InMemoryLaptopStore {
+func NewInMemoryLaptopStore() store.LaptopStore {
 	return &InMemoryLaptopStore{
 		data: make(map[string]*pb.Laptop),
 	}

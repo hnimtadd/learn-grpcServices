@@ -209,7 +209,7 @@ func (s *LaptopServer) RateLaptop(stream pb.LaptopService_RateLaptopServer) erro
 				rsp := &pb.RateLaptopResponse{
 					LaptopId:     laptopID,
 					RatedCount:   rating.Count,
-					AverageScore: float64((rating.Count) / rating.Count),
+					AverageScore: float64((uint32(rating.Sum)) / rating.Count),
 				}
 				rspCh <- rsp
 			}

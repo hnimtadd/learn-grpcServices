@@ -53,6 +53,8 @@ func testRating(laptopClient *client.LaptopClient) {
 		laptop := sample.NewLaptop()
 		laptopClient.CreateLaptop(laptop)
 		laptopIDs = append(laptopIDs, laptop.Id)
+		laptopIDs = append(laptopIDs, laptop.Id)
+		scores = append(scores, sample.NewScore())
 		scores = append(scores, sample.NewScore())
 	}
 	laptopClient.RateLaptop(laptopIDs, scores)
@@ -137,8 +139,8 @@ func main() {
 	}
 	laptopClient := client.NewLaptopClient(cc2, username, password)
 
-	testCreateLaptop(laptopClient)
+	// testCreateLaptop(laptopClient)
 	// testSearchLaptop(laptopClient)
 	// testUploadImage(laptopClient)
-	// testRating(laptopClient)
+	testRating(laptopClient)
 }

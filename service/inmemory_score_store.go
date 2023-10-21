@@ -2,6 +2,7 @@ package service
 
 import (
 	"grpcCource/pkg/models"
+	"grpcCource/pkg/store"
 	"grpcCource/utils"
 	"sync"
 )
@@ -11,7 +12,7 @@ type InMemoryRatingStore struct {
 	ratings map[string]*models.Rating
 }
 
-func NewInMemoryRatingStore() *InMemoryRatingStore {
+func NewInMemoryRatingStore() store.RatingStore {
 	store := &InMemoryRatingStore{
 		ratings: map[string]*models.Rating{},
 	}
